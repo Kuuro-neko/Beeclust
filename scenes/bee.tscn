@@ -272,7 +272,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_15g2n"]
-radius = 5.0
+radius = 4.01386
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = 1

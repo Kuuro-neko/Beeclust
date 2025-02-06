@@ -11,6 +11,10 @@ const SPEED = 300.0
 @export var down_right_corner: Node2D
 @export var heatmap: Control
 
+var wave_amplitude = 50.0
+var wave_frequency = 25.0 
+var wave_offset = randf() * TAU
+
 var state = MOVE
 var timeToWait = 0.
 var direction = Vector2.ZERO
@@ -34,7 +38,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if state == MOVE:
-		var collision = move_and_collide(direction * SPEED * delta)
+		var perp = Vector2(-direction.y, direction.x)
+		var wave_offset_amount = sin(Time.get_ticks_msec() * 0.001 * wave_frequency + wave_offset) * wave_amplitude
+		var move_vector = (direction * SPEED + perp * wave_offset_amount) * delta
+		var collision = move_and_collide(move_vector)
 		if collision:
 			handle_collision(collision)
 

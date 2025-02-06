@@ -1,6 +1,7 @@
 extends Node2D
 
 var bee = preload("res://scenes/bee.tscn")
+
 @export var target: Node2D
 @export var up_left_corner: Node2D
 @export var up_right_corner: Node2D
@@ -20,10 +21,9 @@ func getNBees() -> int:
 		return 20
 	return int(config.get_value("Settings", "NBees"))
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var nBees = getNBees()
-	print("creating bees : ", nBees)
+	print("creating ", nBees, " bees")
 
 	for i in range(nBees):
 		var new_bee = create_bee()
@@ -40,21 +40,19 @@ func is_colliding(pos: Vector2) -> bool:
 	if bees.is_empty():
 		return false
 	for bee in bees:
-		if bee.position.distance_to(pos) < 20: # Adjust collision radius if needed
+		if bee.position.distance_to(pos) < 12:
 			return true
 	return false
 	
 func create_bee() -> Node2D:
-	var max_attempts = 10
+	var max_attempts = 20
 	for _i in range(max_attempts):
 		var pos = get_random_position()
-		
-		# Check for collisions with existing bees
+
 		if not is_colliding(pos):
 			var new_bee = bee.instantiate()
 			new_bee.position = pos
-			
-			# Pass exported variables to bee
+
 			new_bee.target = target
 			new_bee.heatmap = heatmap
 			new_bee.up_left_corner = up_left_corner
