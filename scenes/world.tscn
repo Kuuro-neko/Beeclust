@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bukw6bdsorcya" path="res://assets/tilesets/Tilled_Dirt_v2.png" id="4_0brqr"]
 [ext_resource type="Texture2D" uid="uid://bb62xrhktitj0" path="res://assets/Objects/Basic_Plants.png" id="4_xkgik"]
 [ext_resource type="Texture2D" uid="uid://b0w1i5axm7lb4" path="res://assets/Objects/Cosmo.png" id="6_in5o7"]
-[ext_resource type="Script" path="res://scripts/control.gd" id="8_tmbk2"]
+[ext_resource type="Script" path="res://scripts/heatmap.gd" id="8_tmbk2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vrnjb"]
 texture = ExtResource("2_yriin")
@@ -395,7 +395,7 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
 [node name="CharacterBody2D2" parent="Bees" node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap") groups=["Bee"] instance=ExtResource("1_qpb64")]
 z_index = 1
@@ -406,7 +406,7 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
 [node name="CharacterBody2D3" parent="Bees" node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap") groups=["Bee"] instance=ExtResource("1_qpb64")]
 z_index = 1
@@ -417,7 +417,7 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
 [node name="CharacterBody2D4" parent="Bees" node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap") groups=["Bee"] instance=ExtResource("1_qpb64")]
 z_index = 1
@@ -428,7 +428,7 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
 [node name="CharacterBody2D5" parent="Bees" node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap") groups=["Bee"] instance=ExtResource("1_qpb64")]
 z_index = 1
@@ -439,7 +439,7 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
 [node name="CharacterBody2D6" parent="Bees" node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap") groups=["Bee"] instance=ExtResource("1_qpb64")]
 z_index = 1
@@ -450,7 +450,7 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
 [node name="CharacterBody2D7" parent="Bees" node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap") groups=["Bee"] instance=ExtResource("1_qpb64")]
 z_index = 1
@@ -461,7 +461,7 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
 [node name="CharacterBody2D8" parent="Bees" node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap") groups=["Bee"] instance=ExtResource("1_qpb64")]
 z_index = 1
@@ -472,7 +472,7 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
 [node name="CharacterBody2D9" parent="Bees" node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap") groups=["Bee"] instance=ExtResource("1_qpb64")]
 z_index = 1
@@ -483,7 +483,7 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
 [node name="CharacterBody2D10" parent="Bees" node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap") groups=["Bee"] instance=ExtResource("1_qpb64")]
 z_index = 1
@@ -494,7 +494,7 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
 [node name="CharacterBody2D11" parent="Bees" node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap") groups=["Bee"] instance=ExtResource("1_qpb64")]
 z_index = 1
@@ -505,7 +505,7 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
 [node name="CharacterBody2D12" parent="Bees" node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap") groups=["Bee"] instance=ExtResource("1_qpb64")]
 z_index = 1
@@ -516,7 +516,7 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
 [node name="CharacterBody2D13" parent="Bees" node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap") groups=["Bee"] instance=ExtResource("1_qpb64")]
 z_index = 1
@@ -527,7 +527,7 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
 [node name="CharacterBody2D14" parent="Bees" node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap") groups=["Bee"] instance=ExtResource("1_qpb64")]
 z_index = 1
@@ -538,7 +538,7 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
 [node name="CharacterBody2D15" parent="Bees" node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap") groups=["Bee"] instance=ExtResource("1_qpb64")]
 z_index = 1
@@ -549,7 +549,7 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
 [node name="CharacterBody2D16" parent="Bees" node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap") groups=["Bee"] instance=ExtResource("1_qpb64")]
 z_index = 1
@@ -560,9 +560,9 @@ up_left_corner = NodePath("../../Up left corner")
 up_right_corner = NodePath("../../Up right corner")
 down_left_corner = NodePath("../../Down left corner")
 down_right_corner = NodePath("../../Down right corner")
-heatmap = NodePath("../../Control")
+heatmap = NodePath("../../Heatmap")
 
-[node name="Control" type="Control" parent="." node_paths=PackedStringArray("up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner")]
+[node name="Heatmap" type="Control" parent="." node_paths=PackedStringArray("up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner")]
 z_index = 4
 layout_mode = 3
 anchors_preset = 0
@@ -576,7 +576,7 @@ up_right_corner = NodePath("../Up right corner")
 down_left_corner = NodePath("../Down left corner")
 down_right_corner = NodePath("../Down right corner")
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="TextureRect" type="TextureRect" parent="Heatmap"]
 layout_mode = 0
 offset_right = 704.0
 offset_bottom = 386.0
