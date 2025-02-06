@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cb5qcni6nolwj"]
+[gd_scene load_steps=17 format=4 uid="uid://cb5qcni6nolwj"]
 
 [ext_resource type="PackedScene" uid="uid://c7aix6pldv18" path="res://scenes/bee.tscn" id="1_qpb64"]
 [ext_resource type="Texture2D" uid="uid://ci8y6mjw5yfxk" path="res://assets/tilesets/Grass.png" id="2_yriin"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bb62xrhktitj0" path="res://assets/Objects/Basic_Plants.png" id="4_xkgik"]
 [ext_resource type="Texture2D" uid="uid://b0w1i5axm7lb4" path="res://assets/Objects/Cosmo.png" id="6_in5o7"]
 [ext_resource type="Script" path="res://scripts/heatmap.gd" id="8_tmbk2"]
+[ext_resource type="PackedScene" uid="uid://cmk63s78jrhi1" path="res://scenes/pause_menu.tscn" id="9_s2ktp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vrnjb"]
 texture = ExtResource("2_yriin")
@@ -581,3 +582,8 @@ layout_mode = 0
 offset_right = 704.0
 offset_bottom = 386.0
 expand_mode = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("9_s2ktp")]
+visible = false

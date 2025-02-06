@@ -73,7 +73,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -87,7 +87,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_q71qd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_pumxn")
 text = "Start"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Options" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -99,9 +99,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_0p46v")
 theme_override_styles/hover = SubResource("StyleBoxFlat_50bc1")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_q71qd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_pumxn")
-text = "Options"
+text = "Options (TO DO)"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -137,6 +137,6 @@ text = "Beeclust"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_exit_pressed"]
