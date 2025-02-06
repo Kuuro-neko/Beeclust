@@ -99,7 +99,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_0p46v")
 theme_override_styles/hover = SubResource("StyleBoxFlat_50bc1")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_q71qd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_pumxn")
-text = "Options (TO DO)"
+text = "Settings"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2

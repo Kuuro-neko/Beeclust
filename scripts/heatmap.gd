@@ -43,6 +43,8 @@ func store_bee_position(pos: Vector2):
 func draw_heatmap():
 	if not heatmap_enabled:
 		return
+		
+	get_tree().paused = true
 
 	var heatmap_grid = Array()
 	for i in range(world_width):
@@ -82,3 +84,5 @@ func draw_heatmap():
 				var color = Color(0.0, 0.0, 1-intensity)
 				heatmap_image.set_pixel(x, y, color)
 	heatmap_texture.update(heatmap_image)
+	
+	get_tree().paused = false

@@ -1,0 +1,141 @@
+[gd_scene load_steps=10 format=3 uid="uid://b0v6vgdsrbpgp"]
+
+[ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_5r6tp"]
+[ext_resource type="Texture2D" uid="uid://dearlo8ovokty" path="res://assets/beehive.png" id="1_byc00"]
+[ext_resource type="FontFile" uid="uid://c6px3veqj85lg" path="res://assets/Daily Bubble.ttf" id="2_1nk82"]
+[ext_resource type="Script" path="res://scripts/n_bees_value.gd" id="3_0y2lw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gqxyd"]
+texture = ExtResource("1_byc00")
+modulate_color = Color(0.47788, 0.47788, 0.47788, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nsbhf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_piode"]
+bg_color = Color(0.813258, 0.813258, 0.813258, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.211765)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_leqwb"]
+bg_color = Color(0.65834, 0.65834, 0.65834, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.211765)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1poca"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.211765)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5r6tp")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gqxyd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.5
+offset_top = -70.0
+offset_right = 195.5
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="NBees" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Number of bees"
+
+[node name="NBeesSlider" type="HSlider" parent="VBoxContainer/HBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+value = 20.0
+tick_count = 4
+
+[node name="NBeesValue" type="Label" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("nBeesSlider")]
+clip_contents = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "20"
+visible_characters = -2
+visible_ratio = -1.0
+script = ExtResource("3_0y2lw")
+nBeesSlider = NodePath("../NBeesSlider")
+
+[node name="Return" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nsbhf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_piode")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_leqwb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1poca")
+text = "Go back"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -275.0
+offset_right = 194.0
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+theme_override_fonts/font = ExtResource("2_1nk82")
+theme_override_font_sizes/font_size = 90
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/NBeesSlider" to="VBoxContainer/HBoxContainer/NBeesValue" method="_on_n_bees_slider_value_changed"]
+[connection signal="pressed" from="VBoxContainer/Return" to="." method="_on_return_pressed"]
