@@ -1,6 +1,11 @@
 # Beeclust
+
 Implementation of the Beeclust algorithm in Godot
 
 # Used assets
-https://cupnooble.itch.io/sprout-lands-asset-pack
-https://admurin.itch.io/top-down-mobs-bee
+
+Tiles : https://cupnooble.itch.io/sprout-lands-asset-pack
+
+Bees : https://admurin.itch.io/top-down-mobs-bee
+
+Flower : https://jennpixel.itch.io/free-flower-pack-12-icons
