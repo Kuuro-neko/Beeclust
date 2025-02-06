@@ -9,6 +9,7 @@ const SPEED = 300.0
 @export var up_right_corner: Node2D
 @export var down_left_corner: Node2D
 @export var down_right_corner: Node2D
+@export var heatmap: Control
 
 var state = MOVE
 var timeToWait = 0.
@@ -49,7 +50,10 @@ func _physics_process(delta: float) -> void:
 	elif state == TURN:
 		turn_direction()
 		state = MOVE
-
+		
+	if(heatmap):
+		heatmap.store_bee_position(position)
+	
 	play_anim()
 
 func turn_direction():
