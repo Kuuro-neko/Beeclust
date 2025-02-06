@@ -16,13 +16,10 @@ func _ready() -> void:
 	direction = [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP].pick_random()
 
 func _physics_process(delta: float) -> void:
-	velocity = Vector2.ZERO
 	if state == MOVE:
 		var collision = move_and_collide(direction * SPEED * delta)
 		if collision:
 			handle_collision(collision)
-		else:
-			position += direction * SPEED * delta
 
 	elif state == MEASURE:
 		timeToWait = measure()
@@ -43,7 +40,6 @@ func _physics_process(delta: float) -> void:
 		state = MOVE
 
 	play_anim()
-	move_and_slide()
 
 func handle_collision(collision: KinematicCollision2D):
 	var collider = collision.get_collider()
@@ -53,6 +49,9 @@ func handle_collision(collision: KinematicCollision2D):
 		state = TURN
 
 func play_anim():
+	if not has_node("AnimatedSprite2D"):
+		return
+		
 	var anim = $AnimatedSprite2D
 	if state == MOVE:
 		match direction:
