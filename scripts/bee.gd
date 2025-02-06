@@ -10,7 +10,6 @@ const SPEED = 300.0
 @export var down_left_corner: Node2D
 @export var down_right_corner: Node2D
 
-
 var state = MOVE
 var timeToWait = 0.
 var direction = Vector2.ZERO
