@@ -89,7 +89,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
 value = 20.0
-tick_count = 4
+tick_count = 5
 
 [node name="NBeesValue" type="Label" parent="VBoxContainer/HBoxContainer" node_paths=PackedStringArray("nBeesSlider")]
 clip_contents = true
@@ -137,5 +137,6 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/NBeesSlider" to="." method="_on_n_bees_slider_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer/NBeesSlider" to="VBoxContainer/HBoxContainer/NBeesValue" method="_on_n_bees_slider_value_changed"]
 [connection signal="pressed" from="VBoxContainer/Return" to="." method="_on_return_pressed"]
