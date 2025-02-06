@@ -4,16 +4,33 @@ enum {WAIT, TURN, MEASURE, MOVE}
 
 const SPEED = 300.0
 
+@export var target: Node2D
+@export var up_left_corner: Node2D
+@export var up_right_corner: Node2D
+@export var down_left_corner: Node2D
+@export var down_right_corner: Node2D
+
+
 var state = MOVE
 var timeToWait = 0.
 var direction = Vector2.ZERO
+var maxDistance
 
 func measure() -> float:
-	return Vector2(17,6).distance_to(position) / 200
+	var proximityRatio = 1-target.position.distance_to(position) / maxDistance
+	var t = proximityRatio*proximityRatio*proximityRatio*4
+	# print("proximity : ", proximityRatio, " t : ", t)
+	return t
 	
 func _ready() -> void:
 	state = MOVE
-	direction = [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP].pick_random()
+	maxDistance = max(
+		target.position.distance_to(up_left_corner.position),
+		target.position.distance_to(up_right_corner.position),
+		target.position.distance_to(down_left_corner.position),
+		target.position.distance_to(down_right_corner.position)
+	)
+	direction = Vector2.RIGHT.rotated(randf() * TAU).normalized()
 
 func _physics_process(delta: float) -> void:
 	if state == MOVE:
@@ -31,15 +48,19 @@ func _physics_process(delta: float) -> void:
 			state = TURN
 
 	elif state == TURN:
-		if (direction.x == 0):
-			direction.x = [1, -1].pick_random()
-			direction.y = 0
-		else:
-			direction.y = [1, -1].pick_random()
-			direction.x = 0
+		turn_direction()
 		state = MOVE
 
 	play_anim()
+
+func turn_direction():
+	var side = randi_range(0,1)
+	var angle
+	if side == 1:
+		angle = randf_range(PI/3, 2*PI/3)
+	else:
+		angle = randf_range(4*PI/3, 5*PI/3)
+	direction = direction.rotated(angle).normalized()
 
 func handle_collision(collision: KinematicCollision2D):
 	var collider = collision.get_collider()
@@ -53,15 +74,23 @@ func play_anim():
 		return
 		
 	var anim = $AnimatedSprite2D
+	var angle = direction.angle()
+
 	if state == MOVE:
-		match direction:
-			Vector2.UP: anim.play("bee_walk_back")
-			Vector2.DOWN: anim.play("bee_walk_front")
-			Vector2.LEFT: anim.play("bee_walk_left")
-			Vector2.RIGHT: anim.play("bee_walk_right")
+		if -PI/4 <= angle and angle < PI/4:
+			anim.play("bee_walk_right")
+		elif PI/4 <= angle and angle < 3*PI/4:
+			anim.play("bee_walk_front")
+		elif -3*PI/4 <= angle and angle < -PI/4:
+			anim.play("bee_walk_back")
+		else:
+			anim.play("bee_walk_left")
 	else:
-		match direction:
-			Vector2.UP: anim.play("bee_idle_back")
-			Vector2.DOWN: anim.play("bee_idle_front")
-			Vector2.LEFT: anim.play("bee_idle_left")
-			Vector2.RIGHT: anim.play("bee_idle_right")
+		if -PI/4 <= angle and angle < PI/4:
+			anim.play("bee_idle_right")
+		elif PI/4 <= angle and angle < 3*PI/4:
+			anim.play("bee_idle_front")
+		elif -3*PI/4 <= angle and angle < -PI/4:
+			anim.play("bee_idle_back")
+		else:
+			anim.play("bee_idle_left")
