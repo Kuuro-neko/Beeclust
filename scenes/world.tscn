@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cb5qcni6nolwj"]
+[gd_scene load_steps=30 format=4 uid="uid://cb5qcni6nolwj"]
 
 [ext_resource type="Texture2D" uid="uid://ci8y6mjw5yfxk" path="res://assets/tilesets/Grass.png" id="2_yriin"]
 [ext_resource type="Texture2D" uid="uid://dkj4ltms545io" path="res://assets/tilesets/Tilled_Dirt.png" id="3_ada3r"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/bees_spawn.gd" id="7_4axgn"]
 [ext_resource type="Script" path="res://scripts/heatmap.gd" id="8_tmbk2"]
 [ext_resource type="PackedScene" uid="uid://cmk63s78jrhi1" path="res://scenes/pause_menu.tscn" id="9_s2ktp"]
+[ext_resource type="Shader" path="res://shaders/rays.gdshader" id="11_vgmnn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vrnjb"]
 texture = ExtResource("2_yriin")
@@ -547,6 +548,32 @@ texture = ExtResource("4_xkgik")
 sources/0 = SubResource("TileSetAtlasSource_5waer")
 sources/1 = SubResource("TileSetAtlasSource_n0l5w")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bm2mh"]
+shader = ExtResource("11_vgmnn")
+shader_parameter/angle = 0.37
+shader_parameter/position = 0.424
+shader_parameter/spread = 0.293
+shader_parameter/cutoff = 0.164
+shader_parameter/falloff = 0.361
+shader_parameter/edge_fade = 0.448
+shader_parameter/speed = 1.002
+shader_parameter/ray1_density = 7.103
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.187
+shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+
+[sub_resource type="Gradient" id="Gradient_tlb0e"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.152941)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kers6"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lodd8"]
+color_ramp = SubResource("Gradient_tlb0e")
+noise = SubResource("FastNoiseLite_kers6")
+
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 
@@ -586,7 +613,15 @@ position = Vector2(-351, 191)
 position = Vector2(352, 191)
 
 [node name="Target" type="Node2D" parent="."]
-position = Vector2(278, 106)
+position = Vector2(246, 130)
+
+[node name="Godrays" type="Sprite2D" parent="Target"]
+z_index = 2
+material = SubResource("ShaderMaterial_bm2mh")
+position = Vector2(86, -184.5)
+scale = Vector2(0.660156, 1.09961)
+texture = SubResource("NoiseTexture2D_lodd8")
+flip_h = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Target"]
 texture = ExtResource("6_in5o7")
