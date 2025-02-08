@@ -117,3 +117,7 @@ func _on_h_button_pressed() -> void:
 		draw_heatmap()
 	else:
 		$TextureRect.visible = false
+
+func clear_heatmap():
+	bee_positions = []
+	n_pos = 0

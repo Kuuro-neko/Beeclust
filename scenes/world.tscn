@@ -709,8 +709,9 @@ expand_mode = 2
 
 [node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="PauseMenuCanvas" node_paths=PackedStringArray("esc_button") instance=ExtResource("9_s2ktp")]
+[node name="PauseMenu" parent="PauseMenuCanvas" node_paths=PackedStringArray("heatmap", "esc_button") instance=ExtResource("9_s2ktp")]
 visible = false
+heatmap = NodePath("../../Heatmap")
 esc_button = NodePath("../../Control UI/HBoxContainer/Pause/ESC Button")
 
 [node name="CloudsShadow" type="Sprite2D" parent="."]

@@ -1,5 +1,6 @@
 extends Control
 
+@export var heatmap : Control
 @export var esc_button : TextureButton
 var normal_texture_esc = preload("res://assets/Keys/ESC_key.png")
 
@@ -47,3 +48,7 @@ func _on_esc_button_pressed() -> void:
 		pause()
 	elif get_tree().paused:
 		resume()
+
+
+func _on_reset_heatmap_pressed() -> void:
+	heatmap.clear_heatmap()
