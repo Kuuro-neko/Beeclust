@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://cb5qcni6nolwj"]
+[gd_scene load_steps=46 format=4 uid="uid://cb5qcni6nolwj"]
 
 [ext_resource type="Script" path="res://scripts/target.gd" id="1_05pqb"]
 [ext_resource type="Texture2D" uid="uid://ci8y6mjw5yfxk" path="res://assets/tilesets/Grass.png" id="2_yriin"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dlr2uwv7rvp8q" path="res://assets/Objects/Basic_Grass_Biom_things.png" id="5_o46ab"]
 [ext_resource type="Texture2D" uid="uid://b0w1i5axm7lb4" path="res://assets/Objects/Cosmo.png" id="6_in5o7"]
 [ext_resource type="Script" path="res://scripts/bees_spawn.gd" id="7_4axgn"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="7_ttlee"]
 [ext_resource type="Script" path="res://scripts/heatmap.gd" id="8_tmbk2"]
 [ext_resource type="PackedScene" uid="uid://cmk63s78jrhi1" path="res://scenes/pause_menu.tscn" id="9_s2ktp"]
 [ext_resource type="Shader" path="res://shaders/rays.gdshader" id="11_vgmnn"]
@@ -581,6 +582,15 @@ colors = PackedColorArray(0, 0, 0, 0.152941)
 color_ramp = SubResource("Gradient_tlb0e")
 noise = SubResource("FastNoiseLite_kers6")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ba2a5"]
+shader = ExtResource("7_ttlee")
+shader_parameter/color = Color(1, 1, 1, 0)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
 [sub_resource type="Gradient" id="Gradient_ibgd3"]
 offsets = PackedFloat32Array(0, 0.475309, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
@@ -674,6 +684,7 @@ flip_h = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Target"]
 z_index = 3
+material = SubResource("ShaderMaterial_ba2a5")
 texture = ExtResource("6_in5o7")
 offset = Vector2(16, 16)
 
