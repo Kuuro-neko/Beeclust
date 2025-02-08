@@ -20,8 +20,7 @@ func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			var sprite_rect_global = Rect2(sprite.global_position, sprite.texture.get_size())
-			sprite_rect_global.position = (sprite_rect_global.position - camera.offset) * camera.zoom
-			if sprite_rect_global.has_point(event.position):
+			if sprite_rect_global.has_point(get_global_mouse_position()):
 				mouse_offset = position - get_global_mouse_position()
 				selected = true
 		else:
