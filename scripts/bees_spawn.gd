@@ -39,8 +39,8 @@ func get_random_position() -> Vector2:
 func is_colliding(pos: Vector2) -> bool:
 	if bees.is_empty():
 		return false
-	for bee in bees:
-		if bee.position.distance_to(pos) < 12:
+	for beee in bees:
+		if beee.position.distance_to(pos) < 12:
 			return true
 	return false
 	

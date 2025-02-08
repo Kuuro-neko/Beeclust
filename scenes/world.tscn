@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://cb5qcni6nolwj"]
+[gd_scene load_steps=37 format=4 uid="uid://cb5qcni6nolwj"]
 
 [ext_resource type="Texture2D" uid="uid://ci8y6mjw5yfxk" path="res://assets/tilesets/Grass.png" id="2_yriin"]
 [ext_resource type="Texture2D" uid="uid://dkj4ltms545io" path="res://assets/tilesets/Tilled_Dirt.png" id="3_ada3r"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/heatmap.gd" id="8_tmbk2"]
 [ext_resource type="PackedScene" uid="uid://cmk63s78jrhi1" path="res://scenes/pause_menu.tscn" id="9_s2ktp"]
 [ext_resource type="Shader" path="res://shaders/rays.gdshader" id="11_vgmnn"]
+[ext_resource type="Shader" path="res://shaders/clouds.gdshader" id="12_gjfby"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vrnjb"]
 texture = ExtResource("2_yriin")
@@ -574,6 +575,39 @@ colors = PackedColorArray(0, 0, 0, 0.152941)
 color_ramp = SubResource("Gradient_tlb0e")
 noise = SubResource("FastNoiseLite_kers6")
 
+[sub_resource type="Gradient" id="Gradient_ibgd3"]
+offsets = PackedFloat32Array(0, 0.475309, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dwmbw"]
+noise_type = 4
+fractal_lacunarity = 2.194
+fractal_gain = -0.606
+fractal_weighted_strength = 0.35
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0fjpv"]
+in_3d_space = true
+generate_mipmaps = false
+seamless = true
+color_ramp = SubResource("Gradient_ibgd3")
+noise = SubResource("FastNoiseLite_dwmbw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hkw6i"]
+shader = ExtResource("12_gjfby")
+shader_parameter/isSoft = true
+shader_parameter/speed = 0.037
+shader_parameter/brightness = 0.162
+shader_parameter/threshold = 0.1
+shader_parameter/fluffiness = 0.1
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_0fjpv")
+
+[sub_resource type="Gradient" id="Gradient_cpiue"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_853pb"]
+gradient = SubResource("Gradient_cpiue")
+
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 
@@ -616,7 +650,7 @@ position = Vector2(352, 191)
 position = Vector2(246, 130)
 
 [node name="Godrays" type="Sprite2D" parent="Target"]
-z_index = 2
+z_index = 6
 material = SubResource("ShaderMaterial_bm2mh")
 position = Vector2(86, -184.5)
 scale = Vector2(0.660156, 1.09961)
@@ -659,3 +693,12 @@ expand_mode = 2
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("9_s2ktp")]
 visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+z_index = 3
+material = SubResource("ShaderMaterial_hkw6i")
+position = Vector2(-14.1562, -0.124971)
+scale = Vector2(22.2861, 12.7227)
+texture = SubResource("GradientTexture2D_853pb")
