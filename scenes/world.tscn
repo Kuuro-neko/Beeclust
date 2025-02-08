@@ -1,5 +1,6 @@
-[gd_scene load_steps=43 format=4 uid="uid://cb5qcni6nolwj"]
+[gd_scene load_steps=45 format=4 uid="uid://cb5qcni6nolwj"]
 
+[ext_resource type="Script" path="res://scripts/target.gd" id="1_05pqb"]
 [ext_resource type="Texture2D" uid="uid://ci8y6mjw5yfxk" path="res://assets/tilesets/Grass.png" id="2_yriin"]
 [ext_resource type="Texture2D" uid="uid://dkj4ltms545io" path="res://assets/tilesets/Tilled_Dirt.png" id="3_ada3r"]
 [ext_resource type="Texture2D" uid="uid://b61kcryx8s52a" path="res://assets/tilesets/Hills.png" id="3_imle1"]
@@ -580,6 +581,9 @@ colors = PackedColorArray(0, 0, 0, 0.152941)
 color_ramp = SubResource("Gradient_tlb0e")
 noise = SubResource("FastNoiseLite_kers6")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e32q2"]
+size = Vector2(16, 30)
+
 [sub_resource type="Gradient" id="Gradient_ibgd3"]
 offsets = PackedFloat32Array(0, 0.475309, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
@@ -617,6 +621,7 @@ gradient = SubResource("Gradient_cpiue")
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
+position = Vector2(372, 215)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 10
@@ -660,17 +665,27 @@ position = Vector2(352, 191)
 
 [node name="Target" type="Node2D" parent="."]
 position = Vector2(246, 130)
+script = ExtResource("1_05pqb")
 
 [node name="Godrays" type="Sprite2D" parent="Target"]
 z_index = 6
 material = SubResource("ShaderMaterial_bm2mh")
-position = Vector2(86, -184.5)
-scale = Vector2(0.660156, 1.09961)
+position = Vector2(86, -216.5)
+scale = Vector2(0.660156, 1.22461)
 texture = SubResource("NoiseTexture2D_lodd8")
 flip_h = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Target"]
+z_index = 3
 texture = ExtResource("6_in5o7")
+offset = Vector2(16, 16)
+
+[node name="Area2D" type="Area2D" parent="Target"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target/Area2D"]
+z_index = 50
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_e32q2")
 
 [node name="BeeSpawner" type="Node2D" parent="." node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap")]
 script = ExtResource("7_4axgn")
@@ -713,8 +728,8 @@ modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
 z_index = 3
 material = SubResource("ShaderMaterial_hkw6i")
-position = Vector2(-14.1562, -0.124971)
-scale = Vector2(22.2861, 12.7227)
+position = Vector2(5.4121e-05, -3.33786e-06)
+scale = Vector2(22, 12.5)
 texture = SubResource("GradientTexture2D_853pb")
 
 [node name="Control UI" type="Control" parent="."]
@@ -793,5 +808,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 show_percentage = false
 
+[connection signal="input_event" from="Target/Area2D" to="Target" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Target/Area2D" to="Target" method="_on_area_2d_mouse_entered"]
 [connection signal="pressed" from="Control UI/HBoxContainer/Pause/ESC Button" to="PauseMenuCanvas/PauseMenu" method="_on_esc_button_pressed"]
 [connection signal="pressed" from="Control UI/HBoxContainer/Heatmap/H Button" to="Heatmap" method="_on_h_button_pressed"]

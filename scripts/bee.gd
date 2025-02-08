@@ -11,7 +11,7 @@ const SPEED = 300.0
 @export var down_right_corner: Node2D
 @export var heatmap: Control
 
-var wave_amplitude = 50.0
+var wave_amplitude = 75.0
 var wave_frequency = 25.0 
 var wave_offset = randf() * TAU
 
