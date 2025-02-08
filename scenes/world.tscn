@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://cb5qcni6nolwj"]
+[gd_scene load_steps=44 format=4 uid="uid://cb5qcni6nolwj"]
 
 [ext_resource type="Script" path="res://scripts/target.gd" id="1_05pqb"]
 [ext_resource type="Texture2D" uid="uid://ci8y6mjw5yfxk" path="res://assets/tilesets/Grass.png" id="2_yriin"]
@@ -581,9 +581,6 @@ colors = PackedColorArray(0, 0, 0, 0.152941)
 color_ramp = SubResource("Gradient_tlb0e")
 noise = SubResource("FastNoiseLite_kers6")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e32q2"]
-size = Vector2(16, 30)
-
 [sub_resource type="Gradient" id="Gradient_ibgd3"]
 offsets = PackedFloat32Array(0, 0.475309, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
@@ -679,13 +676,6 @@ flip_h = true
 z_index = 3
 texture = ExtResource("6_in5o7")
 offset = Vector2(16, 16)
-
-[node name="Area2D" type="Area2D" parent="Target"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Target/Area2D"]
-z_index = 50
-position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_e32q2")
 
 [node name="BeeSpawner" type="Node2D" parent="." node_paths=PackedStringArray("target", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner", "heatmap")]
 script = ExtResource("7_4axgn")
@@ -808,7 +798,5 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 show_percentage = false
 
-[connection signal="input_event" from="Target/Area2D" to="Target" method="_on_area_2d_input_event"]
-[connection signal="mouse_entered" from="Target/Area2D" to="Target" method="_on_area_2d_mouse_entered"]
 [connection signal="pressed" from="Control UI/HBoxContainer/Pause/ESC Button" to="PauseMenuCanvas/PauseMenu" method="_on_esc_button_pressed"]
 [connection signal="pressed" from="Control UI/HBoxContainer/Heatmap/H Button" to="Heatmap" method="_on_h_button_pressed"]
