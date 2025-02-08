@@ -670,7 +670,7 @@ down_right_corner = NodePath("../Down right corner")
 heatmap = NodePath("../Heatmap")
 
 [node name="Heatmap" type="Control" parent="." node_paths=PackedStringArray("up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner")]
-z_index = 4
+z_index = 50
 layout_mode = 3
 anchors_preset = 0
 offset_left = -352.0
@@ -694,7 +694,7 @@ expand_mode = 2
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("9_s2ktp")]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="CloudsShadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0, 0, 0, 1)
 z_index = 3
