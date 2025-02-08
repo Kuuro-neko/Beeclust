@@ -1,9 +1,11 @@
 extends Control
 
-var bee_positions: Array = []  # Store bee positions
-const MAX_POSITIONS = 134217728  # ~1GB limit
-var heatmap_enabled = false  # Only draw when requested
+var bee_positions: Array = []
+var n_pos = 0
+const MAX_POSITIONS = 100000000
+var heatmap_enabled = false
 
+@export var progress_bar : ProgressBar
 @export var up_left_corner: Node2D
 @export var up_right_corner: Node2D
 @export var down_left_corner: Node2D
@@ -33,18 +35,21 @@ func _input(event):
 			heatmap_enabled = !heatmap_enabled
 			if heatmap_enabled:
 				draw_heatmap()
-			$TextureRect.visible = heatmap_enabled
+			else:
+				$TextureRect.visible = false
 
 func store_bee_position(pos: Vector2):
 	if bee_positions.size() >= MAX_POSITIONS:
 		bee_positions.pop_front()
 	bee_positions.append(pos)
+	n_pos = n_pos + 1
 
 func draw_heatmap():
 	if not heatmap_enabled:
 		return
 		
 	get_tree().paused = true
+	
 
 	var heatmap_grid = Array()
 	for i in range(world_width):
@@ -54,7 +59,18 @@ func draw_heatmap():
 		heatmap_grid.append(column)
 		
 	var n = 3
-
+	
+	progress_bar.value = 0.
+	progress_bar.show()
+	var batch_size
+	if n_pos <= 100000:
+		batch_size = 500
+	elif n_pos <= 10000000:
+		batch_size = 5000
+	else:
+		batch_size = 50000
+	var done = 0
+	print("Computing ", n_pos, " positions")
 	for pos in bee_positions:
 		var map_x = int(remap(pos.x, up_left_corner.position.x, up_right_corner.position.x, 0, world_width))
 		var map_y = int(remap(pos.y, up_left_corner.position.y, down_left_corner.position.y, 0, world_height))
@@ -68,13 +84,21 @@ func draw_heatmap():
 				var neighbor_y = map_y + dy
 				if neighbor_x >= 0 and neighbor_x < world_width and neighbor_y >= 0 and neighbor_y < world_height:
 					heatmap_grid[neighbor_x][neighbor_y] += 1
-
+		done += 1
+		if done % batch_size == 0:  # Update progress less frequently
+			progress_bar.value = float(done) / float(n_pos) * 100.
+			await get_tree().process_frame  # Allow UI updates
+	
+	progress_bar.value = 100.
+	await get_tree().process_frame  # Allow UI updates
+	
 	var max_count = 0
 	for column in heatmap_grid:
 		for cell in column:
 			max_count = max(max_count, cell)
 
 	# Create the heatmap texture
+	$TextureRect.visible = heatmap_enabled
 	heatmap_image.fill(Color(0, 0, 1, 1))
 	for x in range(world_width):
 		for y in range(world_height):
@@ -84,5 +108,12 @@ func draw_heatmap():
 				var color = Color(0.0, 0.0, 1-intensity)
 				heatmap_image.set_pixel(x, y, color)
 	heatmap_texture.update(heatmap_image)
-	
+	progress_bar.hide()
 	get_tree().paused = false
+
+func _on_h_button_pressed() -> void:
+	heatmap_enabled = !heatmap_enabled
+	if heatmap_enabled:
+		draw_heatmap()
+	else:
+		$TextureRect.visible = false

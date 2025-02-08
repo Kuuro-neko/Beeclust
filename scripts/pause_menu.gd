@@ -1,5 +1,8 @@
 extends Control
 
+@export var esc_button : TextureButton
+var normal_texture_esc = preload("res://assets/Keys/ESC_key.png")
+
 func _ready() -> void:
 	hide()
 	$AnimationPlayer.play("RESET")
@@ -7,6 +10,7 @@ func _ready() -> void:
 func resume():
 	hide()
 	get_tree().paused = false
+	esc_button.texture_normal = normal_texture_esc
 	$AnimationPlayer.play_backwards("blur")
 
 func pause():
@@ -36,3 +40,10 @@ func _on_quit_pressed() -> void:
 
 func _process(delta: float) -> void:
 	testEsc()
+
+
+func _on_esc_button_pressed() -> void:
+	if !get_tree().paused:
+		pause()
+	elif get_tree().paused:
+		resume()
