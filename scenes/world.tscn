@@ -697,7 +697,7 @@ down_left_corner = NodePath("../Corners/Down left corner")
 down_right_corner = NodePath("../Corners/Down right corner")
 heatmap = NodePath("../Heatmap")
 
-[node name="Heatmap" type="Control" parent="." node_paths=PackedStringArray("progress_bar", "up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner")]
+[node name="Heatmap" type="Control" parent="." node_paths=PackedStringArray("up_left_corner", "up_right_corner", "down_left_corner", "down_right_corner")]
 z_index = 20
 layout_mode = 3
 anchors_preset = 0
@@ -706,7 +706,6 @@ offset_top = -194.0
 offset_right = 352.0
 offset_bottom = 191.0
 script = ExtResource("8_tmbk2")
-progress_bar = NodePath("../Control UI/HBoxContainer/Heatmap compute bar")
 up_left_corner = NodePath("../Corners/Up left corner")
 up_right_corner = NodePath("../Corners/Up right corner")
 down_left_corner = NodePath("../Corners/Down left corner")
@@ -803,14 +802,6 @@ theme_override_constants/outline_size = 2
 theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 24
 text = "Toggle Heatmap"
-
-[node name="Heatmap compute bar" type="ProgressBar" parent="Control UI/HBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(220, 23)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-show_percentage = false
 
 [connection signal="pressed" from="Control UI/HBoxContainer/Pause/ESC Button" to="PauseMenuCanvas/PauseMenu" method="_on_esc_button_pressed"]
 [connection signal="pressed" from="Control UI/HBoxContainer/Heatmap/H Button" to="Heatmap" method="_on_h_button_pressed"]
