@@ -1,7 +1,7 @@
 [gd_scene load_steps=38 format=3 uid="uid://c7aix6pldv18"]
 
 [ext_resource type="Texture2D" uid="uid://cafh6mx46lwrp" path="res://assets/bee/Bee_Idle.png" id="1_euud3"]
-[ext_resource type="Script" path="res://scripts/bee.gd" id="1_kfbm1"]
+[ext_resource type="Script" uid="uid://c1pgli46norx1" path="res://scripts/bee.gd" id="1_kfbm1"]
 [ext_resource type="Texture2D" uid="uid://bi3imi3hejpa" path="res://assets/bee/Bee_Walk.png" id="2_2bfes"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5gds"]

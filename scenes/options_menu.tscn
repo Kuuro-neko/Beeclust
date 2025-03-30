@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://b0v6vgdsrbpgp"]
 
-[ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_5r6tp"]
+[ext_resource type="Script" uid="uid://c0a0l7djmnfxi" path="res://scripts/options_menu.gd" id="1_5r6tp"]
 [ext_resource type="Texture2D" uid="uid://dearlo8ovokty" path="res://assets/beehive.png" id="1_byc00"]
 [ext_resource type="FontFile" uid="uid://c6px3veqj85lg" path="res://assets/Daily Bubble.ttf" id="2_1nk82"]
-[ext_resource type="Script" path="res://scripts/n_bees_value.gd" id="3_0y2lw"]
+[ext_resource type="Script" uid="uid://cf2tvv4qi2m3h" path="res://scripts/n_bees_value.gd" id="3_0y2lw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gqxyd"]
 texture = ExtResource("1_byc00")

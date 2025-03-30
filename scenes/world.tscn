@@ -1,6 +1,6 @@
 [gd_scene load_steps=46 format=4 uid="uid://cb5qcni6nolwj"]
 
-[ext_resource type="Script" path="res://scripts/target.gd" id="1_05pqb"]
+[ext_resource type="Script" uid="uid://p7bfthp1g40x" path="res://scripts/target.gd" id="1_05pqb"]
 [ext_resource type="Texture2D" uid="uid://ci8y6mjw5yfxk" path="res://assets/tilesets/Grass.png" id="2_yriin"]
 [ext_resource type="Texture2D" uid="uid://dkj4ltms545io" path="res://assets/tilesets/Tilled_Dirt.png" id="3_ada3r"]
 [ext_resource type="Texture2D" uid="uid://b61kcryx8s52a" path="res://assets/tilesets/Hills.png" id="3_imle1"]
@@ -8,14 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://bb62xrhktitj0" path="res://assets/Objects/Basic_Plants.png" id="4_xkgik"]
 [ext_resource type="Texture2D" uid="uid://dlr2uwv7rvp8q" path="res://assets/Objects/Basic_Grass_Biom_things.png" id="5_o46ab"]
 [ext_resource type="Texture2D" uid="uid://b0w1i5axm7lb4" path="res://assets/Objects/Cosmo.png" id="6_in5o7"]
-[ext_resource type="Script" path="res://scripts/bees_spawn.gd" id="7_4axgn"]
-[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="7_ttlee"]
-[ext_resource type="Script" path="res://scripts/heatmap.gd" id="8_tmbk2"]
+[ext_resource type="Script" uid="uid://cjw0yu0o0ey2v" path="res://scripts/bees_spawn.gd" id="7_4axgn"]
+[ext_resource type="Shader" uid="uid://bwndyyysbnrgh" path="res://shaders/outline.gdshader" id="7_ttlee"]
+[ext_resource type="Script" uid="uid://bl0nwmkj0ic02" path="res://scripts/heatmap.gd" id="8_tmbk2"]
 [ext_resource type="PackedScene" uid="uid://cmk63s78jrhi1" path="res://scenes/pause_menu.tscn" id="9_s2ktp"]
-[ext_resource type="Shader" path="res://shaders/rays.gdshader" id="11_vgmnn"]
-[ext_resource type="Shader" path="res://shaders/clouds.gdshader" id="12_gjfby"]
+[ext_resource type="Shader" uid="uid://jjpmy4xmsyrt" path="res://shaders/rays.gdshader" id="11_vgmnn"]
+[ext_resource type="Shader" uid="uid://cuchyw376yuek" path="res://shaders/clouds.gdshader" id="12_gjfby"]
 [ext_resource type="Texture2D" uid="uid://dnynbjqafh2re" path="res://assets/Keys/ESC_key.png" id="13_2a2gc"]
-[ext_resource type="Script" path="res://scripts/ui_buttons_control.gd" id="13_u8qtd"]
+[ext_resource type="Script" uid="uid://7l0ra62sh4rp" path="res://scripts/ui_buttons_control.gd" id="13_u8qtd"]
 [ext_resource type="Texture2D" uid="uid://ccv7ki4qiw0mo" path="res://assets/Keys/ESC_key_pressed.png" id="14_1uwjq"]
 [ext_resource type="Texture2D" uid="uid://jc5maed7ilft" path="res://assets/Keys/H_key.png" id="15_cdctg"]
 [ext_resource type="Texture2D" uid="uid://s11a4kp44jsj" path="res://assets/Keys/H_key_pressed.png" id="16_ia30f"]
@@ -610,12 +610,12 @@ noise = SubResource("FastNoiseLite_dwmbw")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hkw6i"]
 shader = ExtResource("12_gjfby")
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_0fjpv")
 shader_parameter/isSoft = true
 shader_parameter/speed = 0.037
 shader_parameter/brightness = 0.162
 shader_parameter/threshold = 0.1
 shader_parameter/fluffiness = 0.1
-shader_parameter/noiseTexture = SubResource("NoiseTexture2D_0fjpv")
 
 [sub_resource type="Gradient" id="Gradient_cpiue"]
 offsets = PackedFloat32Array(0)

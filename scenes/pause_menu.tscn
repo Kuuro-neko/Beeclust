@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cmk63s78jrhi1"]
 
-[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_iyhsa"]
-[ext_resource type="Shader" path="res://shaders/pause_menu.gdshader" id="1_o3tx6"]
+[ext_resource type="Script" uid="uid://d0vodgrhqo044" path="res://scripts/pause_menu.gd" id="1_iyhsa"]
+[ext_resource type="Shader" uid="uid://dsmvctrl041es" path="res://shaders/pause_menu.gdshader" id="1_o3tx6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_22t8w"]
 shader = ExtResource("1_o3tx6")
@@ -114,8 +114,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u1etd"]
 _data = {
-"RESET": SubResource("Animation_0f661"),
-"blur": SubResource("Animation_6q2g6")
+&"RESET": SubResource("Animation_0f661"),
+&"blur": SubResource("Animation_6q2g6")
 }
 
 [node name="PauseMenu" type="Control"]
